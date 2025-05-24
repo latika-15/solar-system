@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar System</title>
+    <style>
+        *{
+            margin:0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 180vh;
+            width: 100vw;
+        }
+        .universe{
+            height: 100%;
+            width: 100%;
+            /* background-color: rgb(13, 6, 32); */
+            background-image: url(https://wallpaperbat.com/img/194509-star-wallpaper.jpg);
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* perspective: 1000px; 3d effect will work properly */
+            position: relative;
+        }
+        .sun{
+            /* background-color: yellow; */
+            background-image: linear-gradient(yellow,orange);
+            height: 130px;
+            width: 130px;
+            border-radius: 50%;
+            font-size: 1.4rem;
+            /* border: 2px solid yellow; */
+            box-shadow: 4px 4px 20px 6px rgb(255, 128, 0);
+            
+            
+        }
+        .mercury{
+            background-color: rgba(152, 152, 90, 0.767);
+            height: 20px;
+            width:20px;
+            font-size: 0.7rem;
+            animation-name: mer;
+            animation-duration: 10s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+
+            
+        }
+        
+        @keyframes mer{
+            from{
+                transform: rotate(0deg) translate(100px);
+            }
+            to{
+                transform: rotate(360deg) translate(100px);
+            }
+        }
+        .venus{
+            background-image: linear-gradient(rgb(93, 29, 29), rgb(105, 108, 54));
+            height: 30px;
+            width:30px;
+            font-size: 1rem;
+            animation-name: ven;
+            animation-duration: 12s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes ven{
+            from{
+                transform: rotate(0deg) translate(130px);
+            }
+            to{
+                transform: rotate(360deg) translate(130px);
+            }
+        }
+        .planet{
+            /* height: 100px;
+            width: 100px; */
+            border-radius: 50%;
+            /* background-color: white; */
+            /* font-size: 1.4rem; */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            /* transition: transform 0.5s ease-in-out; */
+
+        }
+        .planet:hover{
+            transform: perspective(1000px) translateZ(200px) scale(1.5);
+            z-index:100;
+        }
+        .planet::after {
+    content: attr(data-name);
+    position: absolute;
+    top: -20px;
+    color: white;
+    font-size: 0.8rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+.planet:hover::after {
+    opacity: 1;
+}
+
+        .orbit{
+            height: 300px;
+            width:300px;
+            /* background-color: black; */
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .earth{
+            background-image: linear-gradient(rgba(0, 145, 255,0.9), rgba(22, 231, 15,0.5), rgba(165, 110, 42,0.9));
+            height: 40px;
+            width:40px;
+            font-size: 1rem;
+            animation-name: ear;
+            animation-duration: 14s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes ear{
+            from{
+                transform: rotate(0deg) translate(170px);
+            }
+            to{
+                transform: rotate(360deg) translate(170px);
+            }
+        }
+        .mars{
+            height: 30px;
+            width: 30px;
+            background-color: rgb(113, 99, 77);
+            animation-name: mar;
+            animation-duration: 18s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        
+            @keyframes mar{
+            from{
+                transform: rotate(0deg) translate(210px);
+            }
+            to{
+                transform: rotate(360deg) translate(210px);
+            }
+        
+        }
+        .jupiter{
+            height: 110px;
+            width: 110px;
+            background-image: linear-gradient(rgb(113, 99, 77),brown);
+            animation-name: jup;
+            animation-duration: 20s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+            /* transition-property: all;
+            transition-duration: 5s;
+            transition-timing-function: linear; */
+        }
+        /* .jupiter:hover{
+            /* animation-play-state: paused; */
+            /* transform: perspective(400px) translateZ(200px); */
+        
+        
+        @keyframes jup{
+            from{
+                transform: rotate(0deg) translate(290px);
+            }
+            to{
+                transform: rotate(360deg) translate(290px);
+            }
+        }
+        .saturn{
+            height: 90px;
+            width: 90px;
+            background-color: rgb(132, 118, 52);
+            animation-name: sat;
+            animation-duration: 22s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes sat{
+            from{
+                transform: rotate(0deg) translate(400px);
+            }
+            to{
+                transform: rotate(360deg) translate(400px);
+            }
+        }
+        .uranus{
+            height: 70px;
+            width: 70px;
+            background-color: rgb(60, 116, 122);
+            animation-name: ura;
+            animation-duration: 24s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes ura{
+            from{
+                transform: rotate(0deg) translate(490px);
+            }
+            to{
+                transform: rotate(360deg) translate(490px);
+            }
+        }
+        .neptune{
+            height: 60px;
+            width: 60px;
+            background-color: rgb(57, 81, 148);
+            animation-name: nep;
+            animation-duration: 26s;
+            animation-timing-function: linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes nep{
+            from{
+                transform: rotate(0deg) translate(560px);
+            }
+            to{
+                transform: rotate(360deg) translate(560px);
+            }
+        }
+        
+        .orbital1{
+            border-radius: 50%;
+            height:205px;
+            width: 205px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital2{
+            border-radius: 50%;
+            height: 260px;
+            width:260px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital3{
+            border-radius: 50%;
+            height: 345px;
+            width:345px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital4{
+            border-radius: 50%;
+            height: 420px;
+            width:420px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital5{
+            border-radius: 50%;
+            height: 590px;
+            width:590px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital6{
+            border-radius: 50%;
+            height: 800px;
+            width:800px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        
+        .orbital7{
+            border-radius: 50%;
+            height: 990px;
+            width:990px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .orbital8{
+            border-radius: 50%;
+            height: 1125px;
+            width:1125px;
+            border: 2px dashed white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+        }
+        .info-box {
+    position: fixed;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0,0,0,0.7);
+    padding: 12px 20px;
+    color: white;
+    border-radius: 10px;
+    display: none;
+    pointer-events: none;
+}
+
+    </style>
+</head>
+<body>
+    <div class="universe">
+        <div class="orbit">
+            <div class="planet sun">Sun</div>
+            <div class="orbital1"></div>
+            <!-- <div class="info-box">The Sun is the center of our solar system.</div> -->
+
+            <div class="orbital2">
+            <div class="planet mercury">Mer</div>
+            </div>
+            <div id="info-box" class="info-box"></div>
+
+            <!-- <div class="info-box">Mercury is the smallest planet and closest to the Sun.</div> -->
+            <div class="orbital3">
+            <div class="planet venus">Ven</div>
+           </div>
+            <!-- <div class="info-box">Venus is the hottest planet in our solar system.</div> -->
+<div class="orbital4">
+            <div class="planet earth">Ear</div>
+            </div>
+            <!-- <div class="info-box">Earth is the only planet known to support life.</div> -->
+<div class="orbital5">
+            <div class="planet mars">Mars</div>
+            </div>
+            <!-- <div class="info-box">Mars is known as the Red Planet.</div> -->
+<div class="orbital6">
+            <div class="planet jupiter">Jup</div>
+            </div>
+            <!-- <div class="info-box">Jupiter is the largest planet in the solar system.</div> -->
+<div class="orbital7">
+            <div class="planet saturn">Sat</div>
+            </div>
+            <!-- <div class="info-box">Saturn has the most beautiful ring system.</div> -->
+ <div class="orbital8">
+            <div class="planet uranus">Ura</div>
+           </div>
+            <!-- <div class="info-box">Uranus rotates on its side.</div> -->
+
+      
+            <div class="planet neptune">Nep</div>
+       
+            <!-- <div class="info-box">Neptune is the farthest planet from the Sun.</div> -->
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
